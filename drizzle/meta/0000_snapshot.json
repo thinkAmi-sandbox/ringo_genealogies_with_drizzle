@@ -1,0 +1,200 @@
+{
+  "version": "6",
+  "dialect": "sqlite",
+  "id": "a056b72d-34ff-43f0-bda2-31a5d1f984aa",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "tables": {
+    "apples": {
+      "name": "apples",
+      "columns": {
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "display_name": {
+          "name": "display_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "color": {
+          "name": "color",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "apples_display_name_unique": {
+          "name": "apples_display_name_unique",
+          "columns": [
+            "display_name"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "gen": {
+      "name": "gen",
+      "columns": {
+        "parent_name": {
+          "name": "parent_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "child_name": {
+          "name": "child_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "relation": {
+          "name": "relation",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "gen_parent_name_apples_name_fk": {
+          "name": "gen_parent_name_apples_name_fk",
+          "tableFrom": "gen",
+          "tableTo": "apples",
+          "columnsFrom": [
+            "parent_name"
+          ],
+          "columnsTo": [
+            "name"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "gen_child_name_apples_name_fk": {
+          "name": "gen_child_name_apples_name_fk",
+          "tableFrom": "gen",
+          "tableTo": "apples",
+          "columnsFrom": [
+            "child_name"
+          ],
+          "columnsTo": [
+            "name"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "gen_parent_name_child_name_relation_pk": {
+          "columns": [
+            "parent_name",
+            "child_name",
+            "relation"
+          ],
+          "name": "gen_parent_name_child_name_relation_pk"
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "genealogies": {
+      "name": "genealogies",
+      "columns": {
+        "child_name": {
+          "name": "child_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "pollen_name": {
+          "name": "pollen_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "seed_name": {
+          "name": "seed_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "genealogies_child_name_apples_name_fk": {
+          "name": "genealogies_child_name_apples_name_fk",
+          "tableFrom": "genealogies",
+          "tableTo": "apples",
+          "columnsFrom": [
+            "child_name"
+          ],
+          "columnsTo": [
+            "name"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "genealogies_pollen_name_apples_name_fk": {
+          "name": "genealogies_pollen_name_apples_name_fk",
+          "tableFrom": "genealogies",
+          "tableTo": "apples",
+          "columnsFrom": [
+            "pollen_name"
+          ],
+          "columnsTo": [
+            "name"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "genealogies_seed_name_apples_name_fk": {
+          "name": "genealogies_seed_name_apples_name_fk",
+          "tableFrom": "genealogies",
+          "tableTo": "apples",
+          "columnsFrom": [
+            "seed_name"
+          ],
+          "columnsTo": [
+            "name"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "genealogies_child_name_pollen_name_seed_name_pk": {
+          "columns": [
+            "child_name",
+            "pollen_name",
+            "seed_name"
+          ],
+          "name": "genealogies_child_name_pollen_name_seed_name_pk"
+        }
+      },
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  },
+  "internal": {
+    "indexes": {}
+  }
+}
